@@ -1,15 +1,10 @@
-import sys
-from PyQt5.QtWidgets import QApplication
-from app.main_window import MainWindow
+from flask import Flask, render_template
 
+app = Flask(__name__)
 
-def main():
-    app = QApplication(sys.argv)
-    main_window = MainWindow()
+@app.route('/')
+def home():
+    return render_template('index.html')
 
-    main_window.show()
-    sys.exit(app.exec_())
-
-
-if __name__ == "__main__":
-    main()
+if __name__ == '__main__':
+    app.run(debug=True)
